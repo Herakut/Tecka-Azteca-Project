@@ -14,6 +14,7 @@ const gameoverScreenNode=document.querySelector("#gameover-screen")
 
     //Items
 
+
 /*******/
 
 
@@ -21,10 +22,14 @@ const gameoverScreenNode=document.querySelector("#gameover-screen")
 
 //STATE MANAGEMENT FUNCTIONS
 function startGame(){
+  //lo que va a ocurrir con cada inicio de juego
 splashScreenNode.style.display="none"//ocultar pantalla
 gameoverScreenNode.style.display="none"//ocultar pantalla
 
 gameScreenNode.style.display="flex"//mostrar pantalla
+
+let gameObj = new Game ();
+gameObj.gameLoop()
 }
 
 //EVENT LISTENER

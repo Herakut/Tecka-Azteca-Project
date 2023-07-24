@@ -1,4 +1,4 @@
-let ball= 
+let ballX=10;
 
 
 
