@@ -1,0 +1,91 @@
+/* -----------------DOCUMENTO----------------- */
+body{
+    margin: 0;
+    background-color: lightgrey
+}
+
+/* -----------------PANTALLAS----------------- */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    
+  }
+
+  #game-box{
+    background-color: black;
+    height: 496px;
+    width: 500px;     
+    position:relative;
+    left: 185px;
+    top: 910px;
+    
+    
+    }
+#splash-screen{
+  background-color: lightgrey;
+    position: relative;
+}
+
+/* -----------------BOTONES----------------- */
+
+#start-button {
+    
+    width: 250px;
+    height: 100px;
+    border: none;
+    position:relative;
+    top:-100px;
+    background: transparent;
+    transition: transform 0.2s ease-in;  
+    }
+
+  #start-button img {
+    transform: scale(0.9);
+    }
+  
+  #start-button:hover img {
+    transform: scale(1); 
+    }
+
+/* -----------------BOTONES FINALES----------------- */
+
+  #final-button{
+    position: absolute;
+    width: 250px;
+    height: 100px;
+    border: none;
+    
+    background: transparent;
+    transition: transform 0.2s ease-out;
+  }
+  #final-button img {
+    transform: scale(0.9);
+  }
+  #final-button:hover img {
+    transform: scale(1); 
+  }
+
+/* -----------------OCULTAR DISPLAY----------------- */
+
+
+#game-screen, #gameover-screen{
+display: none;
+}
+
+/* -----------------ITEMS----------------- */
+/*Moneda, sacrificio, pelota, ball*/
+
+#ball {
+    
+    width: 30px;
+    height: 30px;
+  
+  
+    /* para posicionarla dentro del game-box */
+    position: absolute;
+    /* top: -260px; SI QUIERO SALIR DEL TEMPLO, ES AQUI */
+    /* left: 237px;
+  */} 

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tecka Azteca</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+   <!-- PANTALLA INICIO o Splash Screen -->
+   <div id="splash-screen" class="container">
+        <img src="imagenes/pantalla inicio juego final sin boton.jpg"  alt="logoTeckaAzteca">
+        <!--Boton inicio-->
+        <div>
+            <button type="button" id="start-button">
+                <img src="imagenes/boton start.png"
+                height="120px"
+                width="276px"
+                alt="">
+            </button>
+        </div>
+  </div>
+  
+  <!-- BOX SCREEN -->
+  <div id="game-screen" class="container">
+    <div>
+        <!--GameBox-->
+        <div id="game-box" width="496px" heigth="496px" >
+
+            <!--pelota-->
+        <div id="ball"><img src="imagenes/moneda.png" width="30px" alt="coin/ball/sacrifice"></div>
+
+        </div> 
+
+        <!--imagenFondo-->
+        <img src="imagenes/Pantalla de juego.jpg" alt="pantalla-gamebox">
+
+        
+
+        <!--chack mul-->
+        <div id="paddle"></div>
+    </div>
+  </div>
+  
+  <!-- GAME OVER SCREEN -->
+  <div id="gameover-screen" class="container">
+    <img src="imagenes/pantallagame over.jpg"  alt="pantalla-gameover">
+    <!--Boton inicio-->
+    <div>
+        <button type="button" id="final-button">
+            <img src="imagenes/boton start.png"
+            height="120px"
+            width="276px"
+            alt="">
+        </button>
+  </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
