@@ -1,37 +1,55 @@
 class Ball{
  constructor(){
+  
+
     this.ballX=10;
     this.ballY=10;
 
-    this.ballSpeed=1
+    this.ballSpeed=4
     this.isBallMovingRight= true;
     this.isBallMovingDown=true;
     this.ballWidth= 30
     this.ballHeight= 30
-    this.isBallVisible=true;
-    this.ballNode=document.querySelector("#ball")
+    // this.isBallVisible=true;
+    // this.ballNode=document.querySelector("#ball")
+    this.ballNode=document.createElement("img")
+    this.ballNode.src="imagenes/moneda.png"
+    gameBoxNode.append(this.ballNode)
+    this.ballNode.style.width=` ${this.ballWidth}px`
+    this.ballNode.style.height=` ${this.ballHeight}px`
+
+    this.ballNode.style.left=` ${this.ballX}px`
+    this.ballNode.style.top=` ${this.ballY}px`
+
+    this.ballNode.style.position="absolute"
+
  }
-        //Funciones
+      
+ 
+ 
+ 
+ //Funciones, funciones
 
-        ballMovement=()=>{
+    ballMovement=()=>{
 
-    //Movimiento ball
-    if(this.isBallMovingRight===true){
+        //Movimiento ball
+        if(this.isBallMovingRight===true){
         this.ballX+=this.ballSpeed
-    }else{
+         }else{
         this.ballX-=this.ballSpeed
-    }
+        }
+    
 
-    // ballY++ 
-    if(this.isBallMovingDown===true){
+        // ballY++ 
+        if(this.isBallMovingDown===true){
         this.ballY+=this.ballSpeed
-    }else{
+        }else{
         this.ballY-=this.ballSpeed
-    }
+        }
 
-    this.ballY++
+        this.ballY++
 
-    this.ballPositionUpdate()
+        this.ballPositionUpdate()
 
         }
 

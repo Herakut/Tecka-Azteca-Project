@@ -26,57 +26,8 @@ let obstacleHeight= 30
 isGameOn = true
 
 /*********************score***************************/
-let score=0
+let score=6
 let isBallCounted = false;
-
-//FUNCIONES RECOGIDAS
-// function ballMovement(){
-
-//     //Movimiento ball
-//     if(isBallMovingRight===true){
-//         ballX+=ballSpeed
-//     }else{
-//         ballX-=ballSpeed
-//     }
-
-//     // ballY++ 
-//     if(isBallMovingDown===true){
-//         ballY+=ballSpeed
-//     }else{
-//         ballY-=ballSpeed
-//     }
-
-//     ballY++
-
-    
-
-// }
-
-
-
-// function ballPositionUpdate(){
-//     ballNode.style.left=`${ballX}px`
-//     ballNode.style.top=`${ballY}px`
-// }
-
-// function ballPaddleColission(){
-   
-// if ((this.ball.ballY + this.ball.ballHeight > paddleY) && (this.ball.ballX > paddleX)
-//  && (this.ball.ballX + this.ball.ballWidth < paddleX + paddleWidth)) { //condicion aqui, parametro efecto abajo
-//     this.ball.isBallMovingDown =false
-//     this.ball.isBallVisible=false;
-
-//    score++
-//    updateScoreDisplay();
-//    if(this.ball.isBallVisible===false){
-    
-//     // isBallCounted=true-------------->Trabajar luego 
-//     }
-//   } else {
-//     isBallCounted = false; 
-//   }
-// }
-
 
 
 // function ballObstacleColission(){
@@ -90,25 +41,31 @@ class Game {
 
     constructor(){
     //propiedades que va a tener el juego
-    this.ball= new Ball()
-
-
+    // this.ball= new Ball()
+    this.balls=[new Ball()]
+    this.frames=0
     }
-    //aqui los metodos del juego
-ballWallCollision=()=>{ //sistema de puntos subida
-    if(this.ball.ballX>=475){  //475 es la medida de colision PARED DERECHA
-        this.ball.isBallMovingRight=false
 
-       }else if(this.ball.ballY>=465){//Choque pared abajo, a eliminar 465
-        this.ball.isBallMovingDown=false
-        //establecer puntos 
-        //desaparecer pero no cambiar game
-        this.ball.isBallVisible=false;
-        }else if(this.ball.ballX<0){//choque pared izquierda
-            this.ball.isBallMovingRight =true  
+
+    //aqui los metodos del juego
+ballWallCollision=(ball)=>{ //sistema de puntos subida
+    if(ball.ballX>=475){  //475 es la medida de colision PARED DERECHA
+        ball.isBallMovingRight=false
+
+
+       }else if(ball.ballY>=465){//Choque pared abajo, a eliminar 465
+        score-=2
+            this.balls.splice(this.balls.indexOf(ball),1)
+            ball.ballNode.remove()
+            // ball.isBallMovingDown=false-----No hace falta debido a que desaparece
+            //establecer puntos 
+            //desaparecer pero no cambiar game
+            // this.ball.isBallVisible=false;
+        }else if(ball.ballX<0){//choque pared izquierda
+            ball.isBallMovingRight =true  
         
-        }else if(this.ball.ballY<0){//choque pared arriba
-            this.ball.isBallMovingDown=true 
+        }else if(ball.ballY<0){//choque pared arriba
+            ball.isBallMovingDown=true 
         }
         
 }
@@ -119,14 +76,16 @@ ballWallCollision=()=>{ //sistema de puntos subida
         paddleNode.style.top = `${paddleY}px`
     }
     
-    ballPaddleColission=()=>{
-        if ((this.ball.ballY + this.ball.ballHeight > paddleY) &&
-            (this.ball.ballX + paddleX) &&
-            (this.ball.ballX + this.ball.ballWidth < paddleX + paddleWidth)) {
+    ballPaddleColission=(ball)=>{
+        if ((ball.ballY + ball.ballHeight > paddleY) &&
+            (ball.ballX + paddleX) &&
+            (ball.ballX + ball.ballWidth < paddleX + paddleWidth)) {
       
-          this.ball.isBallMovingDown = false;
-          this.ball.isBallVisible = false;
-          this.ball.ballNode.remove(); 
+                this.balls.splice(this.balls.indexOf(ball),1)
+                ball.ballNode.remove()
+        //   this.ball.isBallVisible = false;
+        //   this.ball.ballNode.remove(); 
+        
           score++
           this.updateScoreDisplay();
         } else {
@@ -151,14 +110,29 @@ ballWallCollision=()=>{ //sistema de puntos subida
 
     gameLoop=()=>{
 
-        //1.Cambios en los elementos
-        this.ballWallCollision()
-        this.ballPaddleColission()
-        if(!this.ball.isBallVisible){
-            // this.ball.node.style.display="none"
+        this.frames++
+        //queremos buscar los segundos, por lo que multiplicamos 60frames*los segundos=180
+        if(this.frames%180===0){
+            this.balls.push(new Ball())
         }
+
+        this.balls.forEach(eachBall=>{
+            eachBall.ballMovement()
+            this.ballWallCollision(eachBall)
+            this.ballPaddleColission(eachBall)
+
+        })
+
+        
+
+        //1.Cambios en los elementos
+        // this.ballWallCollision()
+        // this.ballPaddleColission()
+        // if(!this.ball.isBallVisible){
+        //     this.ball.node.style.display="none"
+        // }
         // ballObstacleColission()
-        this.ball.ballMovement()
+        // this.ball.ballMovement()
        //2.Actualizaciones
         this.paddlePositionUpdates()        
         this.updateScoreDisplay()
@@ -167,7 +141,7 @@ ballWallCollision=()=>{ //sistema de puntos subida
         if(isGameOn===true){
 
         }
-
+        
       requestAnimationFrame(this.gameLoop)
       //-->La recursion que inicial el juego y el rate por el cual ira el movimiento  
     }
