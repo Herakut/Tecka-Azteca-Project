@@ -1,19 +1,13 @@
 //NODOS
-const ballNode=document.querySelector("#ball")
+// const ballNode=document.querySelector("#ball")
 const gameBoxNode=document.querySelector("#game-box")
 const paddleNode=document.querySelector("#paddle")
 const obstacleNode=document.querySelector("#obstacle")
-const scoreDisplay = document.querySelector("#game-box score")
+const scoreDisplay = document.querySelector("#score")//crea un span para facilitar el proceso
+// const conten=score.innerText
+// console.log(conten)
 
 //VARIABLES DE PROPIEDADES DE ITEMS
-let ballX=10;
-let ballY=10;
-
-let ballSpeed=6
-let isBallMovingRight= true;
-let isBallMovingDown=true;
-
-let isBallVisible=true;
 
 let paddleX=50;
 let paddleY=440;
@@ -27,81 +21,63 @@ let obstacleHeight= 30
 
 
 
-let ballWidth= 30
-let ballHeight= 30
+
+
+isGameOn = true
 
 /*********************score***************************/
 let score=0
 let isBallCounted = false;
 
 //FUNCIONES RECOGIDAS
-function ballMovement(){
+// function ballMovement(){
 
-    //Movimiento ball
-    if(isBallMovingRight===true){
-        ballX+=ballSpeed
-    }else{
-        ballX-=ballSpeed
-    }
+//     //Movimiento ball
+//     if(isBallMovingRight===true){
+//         ballX+=ballSpeed
+//     }else{
+//         ballX-=ballSpeed
+//     }
 
-    // ballY++ 
-    if(isBallMovingDown===true){
-        ballY+=ballSpeed
-    }else{
-        ballY-=ballSpeed
-    }
+//     // ballY++ 
+//     if(isBallMovingDown===true){
+//         ballY+=ballSpeed
+//     }else{
+//         ballY-=ballSpeed
+//     }
 
-    ballY++
+//     ballY++
 
     
 
-}
-
-function ballWallCollision(){
-    if(ballX>=475){  //475 es la medida de colision PARED DERECHA
-            isBallMovingRight=false
-
-       }else if(ballY>=465){//Choque pared abajo, a eliminar 465
-            isBallMovingDown=false
-       
-        }else if(ballX<0){//choque pared izquierda
-            isBallMovingRight =true  
-        
-        }else if(ballY<0){//choque pared arriba
-            isBallMovingDown=true 
-        }
-        
-}
-
-function ballPositionUpdate(){
-    ballNode.style.left=`${ballX}px`
-    ballNode.style.top=`${ballY}px`
-}
-
-function paddlePositionUpdates(){
-    paddleNode.style.left = `${paddleX}px`
-   paddleNode.style.top = `${paddleY}px`
-}
-
-function ballPaddleColission(){
-    //console.log(ballWidth, paddleWidth)
-if ((ballY + ballHeight > paddleY) && (ballX > paddleX) && (ballX + ballWidth < paddleX + paddleWidth)) {
-   isBallMovingDown =false
-   isBallVisible=false;
-   if(isBallVisible===false){
-    score++
-    isBallCounted=true
-    updateScoreDisplay(); 
-    }
-  } else {
-    isBallCounted = false; 
-  }
-}
+// }
 
 
-function updateScoreDisplay(){
-score.innerText=`${score}`
-}
+
+// function ballPositionUpdate(){
+//     ballNode.style.left=`${ballX}px`
+//     ballNode.style.top=`${ballY}px`
+// }
+
+// function ballPaddleColission(){
+   
+// if ((this.ball.ballY + this.ball.ballHeight > paddleY) && (this.ball.ballX > paddleX)
+//  && (this.ball.ballX + this.ball.ballWidth < paddleX + paddleWidth)) { //condicion aqui, parametro efecto abajo
+//     this.ball.isBallMovingDown =false
+//     this.ball.isBallVisible=false;
+
+//    score++
+//    updateScoreDisplay();
+//    if(this.ball.isBallVisible===false){
+    
+//     // isBallCounted=true-------------->Trabajar luego 
+//     }
+//   } else {
+//     isBallCounted = false; 
+//   }
+// }
+
+
 
 // function ballObstacleColission(){
     
@@ -112,28 +88,85 @@ score.innerText=`${score}`
 
 class Game {
 
-    // constructor(){
-    //     //propiedades que va a tener el juego
+    constructor(){
+    //propiedades que va a tener el juego
+    this.ball= new Ball()
 
 
-    // }
-    // //aqui los metodos del juego
+    }
+    //aqui los metodos del juego
+ballWallCollision=()=>{ //sistema de puntos subida
+    if(this.ball.ballX>=475){  //475 es la medida de colision PARED DERECHA
+        this.ball.isBallMovingRight=false
+
+       }else if(this.ball.ballY>=465){//Choque pared abajo, a eliminar 465
+        this.ball.isBallMovingDown=false
+        //establecer puntos 
+        //desaparecer pero no cambiar game
+        this.ball.isBallVisible=false;
+        }else if(this.ball.ballX<0){//choque pared izquierda
+            this.ball.isBallMovingRight =true  
+        
+        }else if(this.ball.ballY<0){//choque pared arriba
+            this.ball.isBallMovingDown=true 
+        }
+        
+}
 
 
+     paddlePositionUpdates=()=>{
+        paddleNode.style.left = `${paddleX}px`
+        paddleNode.style.top = `${paddleY}px`
+    }
     
+    ballPaddleColission=()=>{
+        if ((this.ball.ballY + this.ball.ballHeight > paddleY) &&
+            (this.ball.ballX + paddleX) &&
+            (this.ball.ballX + this.ball.ballWidth < paddleX + paddleWidth)) {
+      
+          this.ball.isBallMovingDown = false;
+          this.ball.isBallVisible = false;
+          this.ball.ballNode.remove(); 
+          score++
+          this.updateScoreDisplay();
+        } else {
+          isBallCounted = false; 
+        }
+      }
+     
+    updateScoreDisplay=()=>{
+    scoreDisplay.innerText=score
+    
+    //EL JUEGO DEBE TERMINAR
+    if(score ===0){
+        isGameOn=false
+    }
+    }
+    
+    newBall=()=>{
+        setInterval((bolaNueva), 3000)
+    }
+
+
+
     gameLoop=()=>{
 
         //1.Cambios en los elementos
-        ballWallCollision()
-        ballPaddleColission()
-        if(!isBallVisible){
-            ballNode.style.display="none"
+        this.ballWallCollision()
+        this.ballPaddleColission()
+        if(!this.ball.isBallVisible){
+            // this.ball.node.style.display="none"
         }
         // ballObstacleColission()
-        ballMovement()
+        this.ball.ballMovement()
        //2.Actualizaciones
-        paddlePositionUpdates()
-        ballPositionUpdate()
+        this.paddlePositionUpdates()        
+        this.updateScoreDisplay()
+
+        //Efectos del juego:
+        if(isGameOn===true){
+
+        }
 
       requestAnimationFrame(this.gameLoop)
       //-->La recursion que inicial el juego y el rate por el cual ira el movimiento  
