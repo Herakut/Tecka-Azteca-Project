@@ -10,11 +10,16 @@ class Ball{
     this.isBallMovingDown=true;
     this.ballWidth= 30
     this.ballHeight= 30
+
+
+
     // this.isBallVisible=true;
     // this.ballNode=document.querySelector("#ball")
     this.ballNode=document.createElement("img")
     this.ballNode.src="imagenes/moneda.png"
     gameBoxNode.append(this.ballNode)
+
+    
     this.ballNode.style.width=` ${this.ballWidth}px`
     this.ballNode.style.height=` ${this.ballHeight}px`
 

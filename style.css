@@ -15,16 +15,22 @@ body{
   }
 
   #game-box{
-    /* background-color: black; */
-    height: 496px;
-    width: 500px;     
-    position:relative;
+   
+      
+    
+    border: solid black;
+    position: relative;
     left: 185px;
-    top: 910px;
-    overflow:hidden;
+    top: 408px;
+    height: 496px;
+    width: 490px;     
+   
+   
+   
     
     
     }
+
 #splash-screen{
   background-color: lightgrey;
     position: relative;
@@ -76,23 +82,33 @@ body{
 display: none;
 }
 
+
+#game-screen{
+
+  background-image: url("imagenes/BLOQUEEEEE.jpg");
+  overflow: hidden;
+  height: 1126px;
+  width: 1125px;
+  margin:50px auto;
+}
+
 /* -----------------ITEMS----------------- */
 /*Moneda, sacrificio, pelota, ball*/
 
-#ball {
+/* #ball {
     
     width: 30px;
     height: 30px;
   
   
     /* para posicionarla dentro del game-box */
-    position: absolute;
+    /* position: absolute; */
     /* top: -260px; SI QUIERO SALIR DEL TEMPLO, ES AQUI */
     /* left: 237px;
-  */
-} 
+  
+}  */
 
-#paddle {
+/* #paddle {
   background-color: rgb(0, 0, 0);
   width: 70px;
   height: 30px;
@@ -100,10 +116,11 @@ display: none;
   position: absolute;
   top: 440px;
   left: 50px;
-}
+} */
 
 #obstacle{
   background-color: rgb(245, 11, 11);
+  /* tamaño del item */
   width: 150px;
   height: 30px;
 
@@ -111,3 +128,24 @@ display: none;
   top: 100px;
   left: 173px;
 }
+
+#imagen{
+  position: relative;
+  z-index: -1;
+}
+
+
+
+#score{
+  position:relative;
+  font-size: 100px;
+  bottom: 500px;
+  left: 200px;
+  color: brown;
+
+}
+
+#timer{
+  font-size: 60px;
+}
+
