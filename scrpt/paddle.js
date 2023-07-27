@@ -4,15 +4,13 @@ class Paddle{
         this.paddleNode=document.createElement("img")
         this.paddleNode.src="./imagenes/obstaculo.png"
         gameBoxNode.append(this.paddleNode)
-        //Si tengo el elemento img establezco las medidas
-        //y si es un div, como es el caso?
-
+       
 
         //mpropiedades paddle
-        this.paddleX=50;    //left
+        this.paddleX=180;    //left
         this.paddleY=440;   //top
         
-        this.paddleWidth= 70
+        this.paddleWidth= 170
         this.paddleHeight= 30
 
 

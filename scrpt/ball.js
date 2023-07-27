@@ -1,20 +1,19 @@
 class Ball{
- constructor(){
+ constructor(positionX, positionY, speed, functIsBallMovingRight, isBallMovingDown){
   
 
-    this.ballX=10;
-    this.ballY=10;
+    this.ballX=positionX;//CAMBIAR
+    this.ballY=positionY;//CAMBIAR
 
-    this.ballSpeed=4
-    this.isBallMovingRight= true;
-    this.isBallMovingDown=true;
+    this.ballSpeed=speed
+    this.isBallMovingRight= functIsBallMovingRight; //cambiar
+    this.isBallMovingDown=isBallMovingDown;
     this.ballWidth= 30
     this.ballHeight= 30
 
 
 
-    // this.isBallVisible=true;
-    // this.ballNode=document.querySelector("#ball")
+   
     this.ballNode=document.createElement("img")
     this.ballNode.src="imagenes/moneda.png"
     gameBoxNode.append(this.ballNode)
@@ -39,10 +38,12 @@ class Ball{
 
         //Movimiento ball
         if(this.isBallMovingRight===true){
-        this.ballX+=this.ballSpeed
+        this.ballX+=this.ballSpeed//CAMBIAR
          }else{
         this.ballX-=this.ballSpeed
         }
+
+         
     
 
         // ballY++ 
@@ -64,8 +65,41 @@ class Ball{
         }
         
 
-}
+        
 
+
+}
+// constructor(positionX, positionY, functIsBallMovingRight)
+// const ball1 = new Ball(150,10,true,true)
+
+// const ball2= new Ball(10,300,true,true);
+// ball2.ballMovement=()=>{
+
+//     //Movimiento ball
+//     if(ball2.isBall2MovingRight===true){
+//     ball2.ballX+=ball2.ballSpeed//CAMBIAR
+//          }else{
+//     ball2.ballX-=ball2.ballSpeed
+//     }
+
+
+//     // ballY++ 
+//     if(ball2.isBallMovingDown===true){
+//         ball2.ballY+=ball2.ballSpeed
+//     }else{
+//         ball2.ballY-=ball2.ballSpeed
+//     }
+
+//     ball2.ballY++
+
+//     ball2.ballPositionUpdate()
+
+//     }
+
+//     ballPositionUpdate=()=>{
+//         this.ballNode.style.left=`${this.ballX}px`
+//         this.ballNode.style.top=`${this.ballY}px`
+//     }
 
 
 
