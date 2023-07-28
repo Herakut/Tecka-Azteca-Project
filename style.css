@@ -1,4 +1,4 @@
-/* -----------------DOCUMENTO----------------- */
+/* -----------------DOCUMENT----------------- */
 body{
     margin: 0;
     background-color: lightgrey
@@ -10,33 +10,23 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 50px;
-    
+    margin: 50px;    
   }
 
   #game-box{
-   
-      
-    
-    
     position: relative;
     left: 185px;
     top: 408px;
     height: 496px;
-    width: 490px;     
-   
-   
-   
-    
-    
-    }
+    width: 490px;        
+  }
 
 #splash-screen{
   background-color: lightgrey;
     position: relative;
 }
 
-/* -----------------BOTONES----------------- */
+/* -----------------BUTTONS----------------- */
 
 #start-button {
     
@@ -57,35 +47,15 @@ body{
     transform: scale(1); 
     }
 
-/* -----------------BOTONES FINALES----------------- */
 
-  #final-button{
-    position: absolute;
-    width: 250px;
-    height: 100px;
-    border: none;
-    
-    background: transparent;
-    transition: transform 0.2s ease-out;
-  }
-  #final-button img {
-    transform: scale(0.9);
-  }
-  #final-button:hover img {
-    transform: scale(1); 
-  }
-
-/* -----------------OCULTAR DISPLAY----------------- */
-
-
+/* -----------------DISPLAY----------------- */
 #game-screen, #gameover-screen{
 display: none;
 }
 
-
 #game-screen{
 
-  background-image: url("imagenes/BLOQUEEEEE.jpg");
+  background-image: url("imagenes/Gamescreen.jpg");
   overflow: hidden;
   height: 1126px;
   width: 1125px;
@@ -93,74 +63,29 @@ display: none;
 }
 
 /* -----------------ITEMS----------------- */
-/*Moneda, sacrificio, pelota, ball*/
-
-/* #ball {
-    
-    width: 30px;
-    height: 30px;
-  
-  
-    /* para posicionarla dentro del game-box */
-    /* position: absolute; */
-    /* top: -260px; SI QUIERO SALIR DEL TEMPLO, ES AQUI */
-    /* left: 237px;
-  
-}  */
-
-/* #paddle {
-  background-color: rgb(0, 0, 0);
-  width: 70px;
-  height: 30px;
-
-  position: absolute;
-  top: 440px;
-  left: 50px;
-} */
-
-/* #obstacle{
-  background-color: rgb(245, 11, 11);
-   tamaño del item 
-  width: 150px;
-  height: 30px;
-
-  position: absolute;
-  top: 100px;
-  left: 173px;
-} */
-
 #imagen{
   position: relative;
   z-index: -1;
 }
-
-
 
 #score{
   
 
   position: relative;
   font-size: 50px;
-  left: 950px;
-  bottom: -250px;
+  left: 970px;
+  bottom: -260px;
   color:white;
 }
 
 #timer{
-  /* score */
+  
   position:relative;
   font-size: 50px;
-  bottom: -83px;
+  bottom: -90px;
   left: 970px;
   color:rgb(255, 255, 255)
 }
-/* 
-.cont-temporizador .bloque .segundos{
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  font-size: 100px;
-} */
 
 
 

@@ -1,21 +1,19 @@
 class Paddle{
     constructor(){
-        //elemento dom
+        //Node
         this.paddleNode=document.createElement("img")
         this.paddleNode.src="./imagenes/obstaculo.png"
         gameBoxNode.append(this.paddleNode)
        
 
-        //mpropiedades paddle
+        //Properties of paddle
         this.paddleX=180;    //left
         this.paddleY=440;   //top
         
         this.paddleWidth= 100
         this.paddleHeight= 30
 
-
-
-        //tamaño y posicion de paddle
+        //Size & position of paddle
         this.paddleNode.style.left = `${this.paddleX}px`
         this.paddleNode.style.top = `${this.paddleY}px`
 
@@ -27,20 +25,10 @@ class Paddle{
 
     }
 
-    //metodos
+    //Functions
     paddlePositionUpdates=()=>{
         this.paddleNode.style.left = `${this.paddleX}px`
         this.paddleNode.style.top = `${this.paddleY}px`
-    }
-
-
-
-
-
-
-
-    // paddleMovement =(event)=>{
-    
-    // }
+    }  
 
 }
