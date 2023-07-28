@@ -10,7 +10,7 @@ class Paddle{
         this.paddleX=180;    //left
         this.paddleY=440;   //top
         
-        this.paddleWidth= 170
+        this.paddleWidth= 100
         this.paddleHeight= 30
 
 

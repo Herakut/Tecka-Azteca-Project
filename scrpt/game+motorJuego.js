@@ -75,7 +75,7 @@ class Game {
     this.isGameOn = true
 
     //score
-    this.score=1
+    this.score=6
 
     //timer
     this.startCountdown()
@@ -240,7 +240,7 @@ class Game {
         scoreDisplay.innerText=this.score}
     
     gameOver =()=>{
-        if(this.score===0 || this.seconds===0){         
+        if(this.score<=0 || this.seconds===0){         
         this.isGameOn=false;       
         gameScreenNode.style.display="none"
         
