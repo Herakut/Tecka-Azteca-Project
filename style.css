@@ -141,17 +141,16 @@ display: none;
 
   position: relative;
   font-size: 50px;
-  left: 970px;
-  bottom: -190px;
+  left: 950px;
+  bottom: -250px;
   color:white;
-
 }
 
 #timer{
   /* score */
   position:relative;
   font-size: 50px;
-  bottom: -140px;
+  bottom: -83px;
   left: 970px;
   color:rgb(255, 255, 255)
 }
